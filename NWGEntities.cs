@@ -276,7 +276,7 @@ namespace Oxide.Plugins
             int count = 0;
             // Configurable layer mask, typically AI entities are on specific layers.
             // Using Vis.Entities with a list buffer is more efficient than allocating arrays with OverlapSphere.
-            List<BaseEntity> list = Facepunch.Pool.GetList<BaseEntity>();
+            List<BaseEntity> list = Facepunch.Pool.Get<List<BaseEntity>>();
             
             // AI Layer = 11? Default layer for simple check. 'Default', 'Player_Server', etc.
             // Scientists are usually in 'AI' or 'Player' layers. 
@@ -290,7 +290,7 @@ namespace Oxide.Plugins
                     count++;
                 }
             }
-            Facepunch.Pool.FreeList(ref list);
+            Facepunch.Pool.FreeUnmanaged(ref list);
             return count;
         }
 

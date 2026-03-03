@@ -193,7 +193,7 @@ namespace Oxide.Plugins
 
         private Workbench FindNearbyWorkbench(BasePlayer player)
         {
-            var workbenches = Facepunch.Pool.GetList<Workbench>();
+            var workbenches = Facepunch.Pool.Get<List<Workbench>>();
             Vis.Entities(player.transform.position, _config.WorkshopRadius, workbenches, LayerMask.GetMask("Construction", "Deployed"));
             
             Workbench best = null;
@@ -209,7 +209,7 @@ namespace Oxide.Plugins
                 }
             }
 
-            Facepunch.Pool.FreeList(ref workbenches);
+            Facepunch.Pool.FreeUnmanaged(ref workbenches);
             return best;
         }
 
