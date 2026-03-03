@@ -1,0 +1,114 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <!--
+      Get the dlls from a oxide server:
+      > docker cp rust-server:/srv/rust/RustDedicated_Data/Managed ../RustServerManagedDlls
+      Or if you dont need all of them: https://www.nuget.org/packages/RustReferences
+     -->
+    <RustServerPath>..\RustServerManagedDlls</RustServerPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <WarningLevel>0</WarningLevel> <!-- Build on Release config to see warnings `dotnet build -c Release` -->
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="_*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(RustServerPath)\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp" Publicize="true">
+      <HintPath>$(RustServerPath)\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass" Publicize="true">
+      <HintPath>$(RustServerPath)\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(RustServerPath)\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(RustServerPath)\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>$(RustServerPath)\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(RustServerPath)\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(RustServerPath)\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(RustServerPath)\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Steamworks.Win64">
+      <HintPath>$(RustServerPath)\Facepunch.Steamworks.Win64.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.System">
+      <HintPath>$(RustServerPath)\Facepunch.System.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Console">
+      <HintPath>$(RustServerPath)\Facepunch.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Network">
+      <HintPath>$(RustServerPath)\Facepunch.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.UnityEngine">
+      <HintPath>$(RustServerPath)\Facepunch.UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Unity">
+      <HintPath>$(RustServerPath)\Facepunch.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Sqlite">
+      <HintPath>$(RustServerPath)\Facepunch.Sqlite.dll</HintPath>
+    </Reference>    
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(RustServerPath)\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>$(RustServerPath)\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Oxide.CSharp">
+      <HintPath>$(RustServerPath)\Oxide.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Oxide.Core">
+      <HintPath>$(RustServerPath)\Oxide.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Oxide.Rust">
+      <HintPath>$(RustServerPath)\Oxide.Rust.dll</HintPath>
+    </Reference>
+    <Reference Include="Oxide.References">
+      <HintPath>$(RustServerPath)\Oxide.References.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Data">
+      <HintPath>$(RustServerPath)\Rust.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.World">
+      <HintPath>$(RustServerPath)\Rust.World.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Global">
+      <HintPath>$(RustServerPath)\Rust.Global.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Localization">
+      <HintPath>$(RustServerPath)\Rust.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Harmony">
+      <HintPath>$(RustServerPath)\Rust.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Rust.Platform">
+      <HintPath>$(RustServerPath)\Rust.Platform.dll</HintPath>
+    </Reference>    
+    <Reference Include="Rust.Platform.Common">
+      <HintPath>$(RustServerPath)\Rust.Platform.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" PrivateAssets="all" />
+    <PackageReference Include="System.Drawing.Common" Version="10.0.3" />
+  </ItemGroup>
+</Project>
