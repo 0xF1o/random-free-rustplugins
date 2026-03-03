@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>11</LangVersion>
     <!--
       Get the dlls from a oxide server:
       > docker cp rust-server:/srv/rust/RustDedicated_Data/Managed ../RustServerManagedDlls
